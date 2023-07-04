@@ -1,0 +1,71 @@
+
+  <!-- Interviews Page Content -->
+  <div class="container py-5">
+    <h1 class="text-center mb-4">Interviews</h1>
+
+    <!-- Create Interview Form -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h4>Create Interview</h4>
+      </div>
+      <div class="card-body">
+        <form id="new-inter" action="/inter/create" method="post">
+          <div class="form-group">
+            <label for="companyName">Company Name</label>
+            <input type="text" name="company" class="form-control" id="companyName" placeholder="Enter company name">
+          </div>
+          <div class="form-group">
+            <label for="interviewDate">Interview Date</label>
+            <input type="date" name="date" class="form-control" id="interviewDate">
+          </div>
+          <button type="submit" class="btn btn-primary">Create Interview</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- List of Interviews -->
+    <div class="card">
+      <div class="card-header">
+        <h4>List of Interviews</h4>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Company</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+           <% for(interviews of inter) {%>
+            
+            <tr>
+              <td> <%= interviews.date %> </td>
+              <td> <%= interviews.company %> </td>
+              <td>
+                <a href="/students" class="btn btn-info btn-sm">View Students</a>
+                <a href='/inter/destroy/<%= interviews._id %>' id="deleteinterview" class="btn btn-danger btn-sm">Delete</a>
+              </td>
+            </tr>
+
+            <%}%>
+            <!-- <tr>
+              <td>2023-07-20</td>
+              <td>XYZ Corp</td>
+              <td>
+                <a href="#" class="btn btn-info btn-sm">View Students</a>
+                <a href="#" class="btn btn-danger btn-sm">Delete</a>
+              </td>
+            </tr> -->
+            <!-- Add more rows as needed -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-light text-center py-4">
+    <p class="mb-0">&copy; 2023 Team Career Camp. All rights reserved.</p>
+  </footer>

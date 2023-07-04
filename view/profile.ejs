@@ -1,0 +1,40 @@
+
+
+  <!-- Profile Section -->
+  <section class="profile py-5">
+    <div class="container text-center">
+      <h2 class="mb-4">Profile</h2>
+      <div class="row">
+        <div class="col-md-4 offset-md-4">
+          <div class="card">
+            <div class="card-body">
+              <div class="profile-picture mx-auto mb-3">
+                <img src="https://lumiere-a.akamaihd.net/v1/images/a_avatarpandorapedia_tuk_16x9_1098_06_41be0010.jpeg?region=240%2C0%2C1440%2C1080" class="img-fluid rounded-circle" alt="Avatar">
+              </div>
+              <h4 class="card-title"> <%= student.name %> </h4>
+              <p class="card-text">Email: <%= student.email %> </p>
+              <form>
+                <div class="form-group">
+                  <label for="status">Status</label>
+                  <select class="form-control" id="status">
+                    <option value="not_placed">Not Placed</option>
+                    <option value="placed">Placed</option>
+                     
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="avatar">Change Avatar</label>
+                  <input type="file" class="form-control-file" id="avatar">
+                </div>
+               <a href="http://"> <button type="submit" class="btn btn-primary">Update</button></a>
+              </form>
+              <a href="/students" class="btn btn-secondary mt-3">Back</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+ 

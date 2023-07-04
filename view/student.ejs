@@ -1,0 +1,52 @@
+
+  <!-- Student List Section -->
+  <section class="student-list py-5">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Student List</h2>
+        <a href="/std/addnewstd" class="btn btn-primary">Add New Student</a>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">College</th>
+            <th scope="col">Status</th>
+            <th scope="col">DSA Final Score</th>
+            <th scope="col">WebD Final Score</th>
+            <th scope="col">React Final Score</th>
+            <th scope="col">Download Csv</th>
+            <th scope="col">Remove Student</th>
+
+          </tr>
+        </thead>
+        <tbody>
+         
+            <% for(person of student) { %>
+              <tr>
+                <th scope="row"><%= person.id %></th>
+                <td><a href="/std/profile/<%= person._id %>"><%= person.name %> </a></td>
+                <td><%= person.email %></td>
+                <td><%= person.college %></td>
+                <td><%= person.status %></td>
+                <td><%= person.dsaFinalScore %></td>
+                <td><%= person.webDFinalScore %></td>
+                <td><%= person.reactFinalScore %></td>
+                <td><a href="/inter/downloadCsv/<%= person._id %>"><i class="fa fa-duotone fa-file-csv fa-bounce" style="--fa-primary-color: #323129; --fa-secondary-color: #fb0915;"></i></a></td>
+                <td><a href="/std/destroy/<%= person._id %>"><i class="fa fa-duotone fa-user-xmark" style="--fa-primary-color: #db6b71; --fa-secondary-color: #3178f2;"></i></a></td>
+              </tr>
+            <% } %>
+          <!-- Add more student rows as needed -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-light text-center py-4">
+    <p class="mb-0">&copy; 2023 Team Career Camp. All rights reserved.</p>
+  </footer>
+
+

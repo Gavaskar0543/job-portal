@@ -1,0 +1,51 @@
+<div class="modal-body">
+    <h4 class="form-heading">Enter Student Details</h4>
+    <!-- Add student form goes here -->
+    <form action="/std/createNewStudent" method="post">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" required>
+      </div>
+      <div class="form-group">
+        <label for="name">Email</label>
+        <input type="email" name="email" class="form-control" id="name" placeholder="Enter mailId" required>
+      </div>
+      <div class="form-group">
+        <label for="college">College</label>
+        <input type="text" name="college" class="form-control" id="college" placeholder="Enter college" required>
+      </div>
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select class="form-control" name="status" id="status">
+          <option>Placed</option>
+          <option>Not Placed</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="dsaScore">DSA Final Score</label>
+        <input type="number" name="dsaFinalScore" class="form-control" id="dsaScore" placeholder="Enter DSA final score" required>
+      </div>
+      <div class="form-group">
+        <label for="webdScore">WebD Final Score</label>
+        <input type="number" name="webDFinalScore" class="form-control" id="webdScore" placeholder="Enter WebD final score" required>
+      </div>
+      <div class="form-group">
+        <label for="reactScore">React Final Score</label>
+        <input type="number"  name="reactFinalScore" class="form-control" id="reactScore" placeholder="Enter React final score" required>
+      </div>
+      <div class="modal-footer">
+        <button type="reset" class="btn btn-secondary" data-dismiss="modal">Clear</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </form>
+  </div>
+  
+</div>
+</div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-light text-center py-4">
+<p class="mb-0">&copy; 2023 Team Career Camp. All rights reserved.</p>
+</footer>
+
