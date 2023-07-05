@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const multer = require('multer');
 const studentSchema = new mongoose.Schema({
     name:{
         type:String,
@@ -28,6 +29,9 @@ const studentSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    avatar:{
+        type:String
+    }
 },
 {
     timestamps:true
