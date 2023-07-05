@@ -9,7 +9,7 @@
         <h4>Create Interview</h4>
       </div>
       <div class="card-body">
-        <form id="new-inter" action="/inter/create" method="post">
+        <form id="newInterviewForm" action="/inter/create" method="post">
           <div class="form-group">
             <label for="companyName">Company Name</label>
             <input type="text" name="company" class="form-control" id="companyName" placeholder="Enter company name">
@@ -18,7 +18,7 @@
             <label for="interviewDate">Interview Date</label>
             <input type="date" name="date" class="form-control" id="interviewDate">
           </div>
-          <button type="submit" class="btn btn-primary">Create Interview</button>
+          <button type="submit" id="createInterviewBtn" class="btn btn-primary">Create Interview</button>
         </form>
       </div>
     </div>
@@ -45,7 +45,7 @@
               <td> <%= interviews.company %> </td>
               <td>
                 <a href="/students" class="btn btn-info btn-sm">View Students</a>
-                <a href='/inter/destroy/<%= interviews._id %>' id="deleteinterview" class="btn btn-danger btn-sm">Delete</a>
+                <a href='/inter/destroy/<%= interviews._id %>'><button class="btn btn-danger btn-sm">Delete</button></a>
               </td>
             </tr>
 
@@ -69,3 +69,5 @@
   <footer class="bg-light text-center py-4">
     <p class="mb-0">&copy; 2023 Team Career Camp. All rights reserved.</p>
   </footer>
+ 
+  <script src="/js/interviewAjax.js"></script>

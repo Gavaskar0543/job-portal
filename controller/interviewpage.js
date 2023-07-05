@@ -2,11 +2,12 @@ const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const fs = require('fs');
 const Student = require('../models/studentData');
 const Interview = require('../models/interviewData');
+
 //scheduling interview
 module.exports.create = async function(req,res){
-   const interview =  await Interview.create(req.body);
-    console.log('interview scheduled successfully!',interview);
-    return res.redirect('back');
+  const interview =  await Interview.create(req.body);
+   console.log('interview scheduled successfully!',interview);
+   return res.redirect('back');
 }
 
 //delete interview form database
@@ -72,4 +73,3 @@ module.exports.downloadCsv = async function(req, res) {
     res.status(500).json({ message: 'Server error' });
   }
 };
-
