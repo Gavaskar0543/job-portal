@@ -19,7 +19,9 @@ module.exports.create = async function(req,res){
 }
 //studentProfile
 module.exports.studentProfile = async function(req,res){
-    const student = await Student.findById(req.params.id);
+    const student = await Student.findById(req.params.id)
+    //.sort('-createdAt' ); // Sort by createdAt in descending order
+
     return res.render('profile',{
         student:student
     });

@@ -29,7 +29,7 @@
         <h4>List of Interviews</h4>
       </div>
       <div class="card-body">
-        <table class="table table-bordered">
+        <table id="interviewTable" class="table table-bordered">
           <thead>
             <tr>
               <th>Date</th>
@@ -37,7 +37,7 @@
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
+           <tbody id="addnewRow">
            <% for(interviews of inter) {%>
             
             <tr>
@@ -45,7 +45,7 @@
               <td> <%= interviews.company %> </td>
               <td>
                 <a href="/students" class="btn btn-info btn-sm">View Students</a>
-                <a href='/inter/destroy/<%= interviews._id %>'><button class="btn btn-danger btn-sm">Delete</button></a>
+                <a href='/inter/destroy/<%= interviews._id %>'><button  id="deleteInterview" class="btn btn-danger btn-sm">Delete</button></a>
               </td>
             </tr>
 
@@ -71,3 +71,4 @@
   </footer>
  
   <script src="/js/interviewAjax.js"></script>
+  <script src="/js/DeleteInterview.js"></script>
