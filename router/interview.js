@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const interviewcontrol = require('../controller/interviewpage');
 //schedule interview
-router.post('/create',interviewcontrol.create);
+router.post('/newOne',interviewcontrol.newOne);
 //delete interview
 router.get('/destroy/:id',interviewcontrol.destroy);
 //download csv

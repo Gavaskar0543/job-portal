@@ -9,7 +9,7 @@
         <h4>Create Interview</h4>
       </div>
       <div class="card-body">
-        <form id="newInterviewForm" action="/inter/create" method="post">
+        <form id="newInterviewForm" action="/inter/newOne" method="post">
           <div class="form-group">
             <label for="companyName">Company Name</label>
             <input type="text" name="company" class="form-control" id="companyName" placeholder="Enter company name">
@@ -37,7 +37,7 @@
               <th>Action</th>
             </tr>
           </thead>
-           <tbody id="addnewRow">
+          <tbody>
            <% for(interviews of inter) {%>
             
             <tr>
@@ -45,7 +45,7 @@
               <td> <%= interviews.company %> </td>
               <td>
                 <a href="/students" class="btn btn-info btn-sm">View Students</a>
-                <a href='/inter/destroy/<%= interviews._id %>'><button  id="deleteInterview" class="btn btn-danger btn-sm">Delete</button></a>
+                <a href='/inter/destroy/<%= interviews._id %>'><button class="btn btn-danger btn-sm">Delete</button></a>
               </td>
             </tr>
 
@@ -70,5 +70,6 @@
     <p class="mb-0">&copy; 2023 Team Career Camp. All rights reserved.</p>
   </footer>
  
+
   <script src="/js/interviewAjax.js"></script>
-  <script src="/js/DeleteInterview.js"></script>
+ 

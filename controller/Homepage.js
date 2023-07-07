@@ -21,6 +21,7 @@ module.exports.addnewS = function(req,res){
 //interview
 module.exports.interview = async function(req,res){
     const interview = await Interview.find();
+   
     return res.render('interview',{
         inter : interview
     });

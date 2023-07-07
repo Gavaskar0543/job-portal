@@ -4,34 +4,35 @@ const Student = require('../models/studentData');
 const Interview = require('../models/interviewData');
 
 //scheduling interview
-module.exports.create = async function(req,res){
-  const interview =  await Interview.create(req.body);
-   if(req.xhr){
-    return res.status(200).json({
-      data:{
-        interview : interview
-      },
-      message:"interview added!"
-    })
-  }  
+module.exports.newOne = async function(req,res){
+
+  try{
+   
+    let interview = await Interview.create(req.body);
+     if(req.xhr){
+      return res.status(200).json({
+        data:{
+          interview : interview
+        },
+        message:'interview scheduled'
+      })
+     }
+   res.redirect('back'); 
+  }
+  catch(error){
+   console.log(error.message);
+  }
+  
+   
 }
 
 //delete interview form database
 module.exports.destroy = async function(req,res){
   try {
     const interviewDate = await Interview.findById(req.params.id);
-    
-    const inter = await Interview.deleteOne(interviewDate._id);
+     await Interview.deleteOne(interviewDate._id);
+    return res.redirect('back');
 
-    if(req.xhr){
-      return res.status(200).json({
-        data:{
-          inter : inter
-        },
-        message:"schedule as been removed from database"
-      })
-   
-    }
   } catch (error) {
     console.log(error.message,'error in deleting interview schedule')
   }

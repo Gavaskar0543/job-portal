@@ -40,11 +40,11 @@
 
             $.ajax({
                 type: 'POST',
-                url: '/inter/create',
+                url: '/inter/newOne',
                 data: createInterForm.serialize(),
                 success: (data) => {
                     console.log(data);
-                    let newInterView = newInterview(data.data.interview);
+                    let newInterView = newInter(data.data.interview);
                     $('#interviewTable tbody').prepend(newInterView);
                 },
                 error: (xhr, textStatus, errorThrown) => {
@@ -54,7 +54,7 @@
         });
     }
     
-    let newInterview = (interviews) =>{
+    let newInter = (interviews) =>{
         return $(`   
             
             <tr>
@@ -62,12 +62,20 @@
               <td> ${ interviews.company } </td>
               <td>
                 <a href="/students" class="btn btn-info btn-sm">View Students</a>
-                <a href='/inter/destroy/${ interviews._id }'><button class="btn btn-danger btn-sm">Delete</button></a>
+            <a href='/inter/destroy/${ interviews._id }'><button class="btn btn-danger btn-sm">Delete</button></a>
               </td>
             </tr>
 
             `);
     }
+  
+   
+      
+     
+
+  
+      
+
     createInterview();
   
 
