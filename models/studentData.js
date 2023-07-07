@@ -38,17 +38,20 @@ const studentSchema = new mongoose.Schema({
 {
     timestamps:true
 });
+
 let storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, path.join(__dirname,'..',AVATAR_PATH) )
+      cb(null, path.join(__dirname, '..', AVATAR_PATH));
     },
     filename: function (req, file, cb) {
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-      cb(null, file.fieldname + '-' + uniqueSuffix)
+      cb(null, file.fieldname + '-' + Date.now());
     }
-  })
-studentSchema.statics.uploadedAvatar = multer({storage:storage}).single('avatar');
-studentSchema.statics.avatarPath = AVATAR_PATH;  
-const Student = mongoose.model('Student',studentSchema);
+  });
 
+
+// static
+studentSchema.statics.uploadedAvatar = multer({storage:  storage}).single('avatar');
+studentSchema.statics.avatarPath = AVATAR_PATH;
+
+const Student = mongoose.model('Student',studentSchema);
 module.exports = Student;

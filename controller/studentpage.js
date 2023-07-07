@@ -51,22 +51,29 @@ module.exports.destroy = async function(req,res){
 
 module.exports.update = async function(req, res) {
   try {
+
     const student = await Student.findById(req.params.id);
-    Student.uploadedAvatar(req, res, function(err) {
-      if (err) {
-        console.log('multer error', err);
-      }
-      
-      student.status = req.body.status;
-      
-      if (req.file) {
-        student.avatar = Student.avatarPath + '/' + req.file.filename;
-      }
-      student.save();
-       
-    return res.redirect('/std/profile/' + req.params.id);
+    Student.uploadedAvatar(req, res, function(err){
+    if (err) {console.log('*****Multer Error: ', err)}
     
-    });
+    student.status = req.body.status;
+
+    if (req.file){
+                console.log('req.file', req.file);
+                console.log('req.file.filename', req.file.filename);
+
+                if (student.avatar && fs.existsSync(path.join(__dirname, '..', student.avatar))){
+                    fs.unlinkSync(path.join(__dirname, '..', student.avatar));
+                }
+        // this is saving the path of the uploaded file into the avatar field in the user
+        student.avatar = Student.avatarPath + '/' + req.file.filename;
+
+      }
+    student.save();
+    return res.redirect('back');
+    
+});
+
   } catch (error) {
     console.log('Error in updating student:', error.message);
   }
