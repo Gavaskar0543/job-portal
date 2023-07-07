@@ -66,28 +66,9 @@
     }
 
 //delete interview form database
-let deleteInterview = () =>{
-    let deleteLink = $('.delete-interview');
-    console.log(deleteLink);
-  
-        $(deleteLink).click((e)=>{
-            e.preventDefault();
-            $.ajax({
-                type: 'GET',
-                url: $(deleteLink).prop('href'),
-                success: (data) => {
-                    console.log(data);
-                    $(`#interview-${data.data.interview_id}`).remove();
-                },
-                error: (xhr, textStatus, errorThrown) => {
-                    console.log(xhr.responseText);
-                }
-            });
-        });
 
-}
 
-   deleteInterview();
+   
    deleteStudent();
    createInterview();
   
