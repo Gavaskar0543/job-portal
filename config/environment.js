@@ -12,6 +12,8 @@ const accessLogStream = rfs.createStream('access.log', {
 
 const development = {
     name: 'development',
+    dbUser:'gavaskar',
+    dbPassword:'V.gu2PSzC7cLWLa@cluster0',
     secret: 'mystrongsecret',
     morgan: {
         mode: 'dev',
@@ -19,4 +21,17 @@ const development = {
     }
     
 }
-module.exports = development;
+
+const production = {
+    name: 'production',
+    dbUser:process.env.DB_USER,
+    dbPassword:process.env.DB_PASSWORD,
+    secret: process.env.secret,
+    morgan: {
+        mode: 'combined',
+        options: {stream: accessLogStream}
+    }
+    
+}
+
+module.exports = eval(process.env.NODE_ENV) == undefined ? development : eval(process.env.NODE_ENV);
