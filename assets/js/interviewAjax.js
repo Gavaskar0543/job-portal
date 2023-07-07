@@ -29,7 +29,7 @@
     let newInter = (interviews) =>{
         return $(`   
             
-            <tr id="interview-${interviews._id}>
+            <tr id="interview-${interviews._id}">
               <td> ${ interviews.date } </td>
               <td> ${ interviews.company } </td>
               <td>
@@ -43,34 +43,56 @@
   
    
       
-     //delete interview form database
-    let deleteStudent = () =>{
-        let deleteLink = $('.delete-student');
-        console.log(deleteLink);
+//      //delete interview form database
+//     let deleteStudent = () =>{
+//         let deleteLink = $('.delete-student');
+//         console.log(deleteLink);
       
-            $(deleteLink).click((e)=>{
-                e.preventDefault();
-                $.ajax({
-                    type: 'GET',
-                    url: $(deleteLink).prop('href'),
-                    success: (data) => {
-                        console.log(data);
-                        $(`#student-${data.data.student_id}`).remove();
-                    },
-                    error: (xhr, textStatus, errorThrown) => {
-                        console.log(xhr.responseText);
-                    }
-                });
-            });
+//             $(deleteLink).click((e)=>{
+//                 e.preventDefault();
+//                 $.ajax({
+//                     type: 'GET',
+//                     url: $(deleteLink).prop('href'),
+//                     success: (data) => {
+//                         console.log(data);
+//                         $(`#student-${data.data.student_id}`).remove();
+//                     },
+//                     error: (xhr, textStatus, errorThrown) => {
+//                         console.log(xhr.responseText);
+//                     }
+//                 });
+//             });
         
-    }
+//     }
 
-//delete interview form database
+// //delete interview from database
+// let deleteInterview = () =>{
+//     let deleteLink = $('.delete-interview');
+//     console.log(deleteLink);
+//     deleteLink.click((e)=>{
+//         e.preventDefault();
+//         $.ajax({
+//             type: 'GET',
+//             url: $(deleteLink).prop('href'),
+//             success: (data) => {
+//                 console.log(data);
+//                 $(`#interview-${data.data.interview_id}`).remove();
+//             },
+//             error: (xhr, textStatus, errorThrown) => {
+//                 console.log(xhr.responseText);
+//             }
+//         });
+//     });
+// }
 
 
-   
-   deleteStudent();
-   createInterview();
+
+
+
+//    deleteInterview();
+//    deleteStudent();
+//    createInterview();
   
+createInterview();
 
 }

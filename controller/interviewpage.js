@@ -30,10 +30,24 @@ module.exports.newOne = async function(req,res){
 module.exports.destroy = async function(req,res){
   try {
     const interviewDate = await Interview.findById(req.params.id);
-     await Interview.deleteOne(interviewDate._id);
-    
-    return res.redirect('back');
-    
+    if (interviewDate) {
+      await Interview.deleteOne(interviewDate._id);
+      
+      if (req.xhr) {
+        return res.status(200).json({
+          data: {
+            interview_id: req.params.id
+          },
+          message: 'Interview deleted'
+        });
+      }
+      return res.redirect('back');
+    } else {
+      return res.status(404).json({
+        error: 'Interview not found'
+      });
+    }
+        
 
   } catch (error) {
     console.log(error.message,'error in deleting interview schedule')
