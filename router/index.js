@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const studentControl = require('../controller/studentpage');
 const homecontrol = require('../controller/Homepage');
 router.get('/',homecontrol.home);
 
@@ -15,4 +16,6 @@ router.get('/interview',homecontrol.interview);
 router.get('/jobs',homecontrol.job);
 //interview routes
 router.use('/inter',require('./interview'));
+//upload data
+router.post('/uploads/:id',studentControl.update);
 module.exports = router;

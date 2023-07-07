@@ -1,4 +1,6 @@
 const Student = require('../models/studentData');
+const fs = require('fs');
+const path = require('path');
 module.exports.create = async function(req,res){
    
     try{
@@ -40,7 +42,32 @@ module.exports.destroy = async function(req,res){
         })
     }
         
+    
     } catch (error) {
         console.log(error.message,'error in deleting student');
     }
 }
+//updat student
+
+module.exports.update = async function(req, res) {
+  try {
+    const student = await Student.findById(req.params.id);
+    Student.uploadedAvatar(req, res, function(err) {
+      if (err) {
+        console.log('multer error', err);
+      }
+      
+      student.status = req.body.status;
+      
+      if (req.file) {
+        student.avatar = Student.avatarPath + '/' + req.file.filename;
+      }
+      student.save();
+       
+    return res.redirect('/std/profile/' + req.params.id);
+    
+    });
+  } catch (error) {
+    console.log('Error in updating student:', error.message);
+  }
+};

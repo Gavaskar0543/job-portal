@@ -12,4 +12,5 @@ router.post('/createNewStudent',studentControl.create);
 router.get('/profile/:id',studentControl.studentProfile);
 //remove student
 router.get('/destroy/:id',studentControl.destroy);
+//update data
 module.exports = router;

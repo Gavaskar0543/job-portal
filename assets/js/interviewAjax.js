@@ -1,31 +1,3 @@
-// //ajax request to send data to db
-// {
-    
-//     let createInterForm = $('#newInterviewForm');
-//     console.log(createInterForm);
-
-// let btn = $('#createInterviewBtn')
-// btn.click((e)=>{
-//     e.preventDefault();
-//     console.log('please wait while we processing')
-
-//     $.ajax({
-//         type:'',
-//         url :'/inter/create',
-//         data : createInterForm.serialize(),
-//         success:(data) =>{
-//             console.log(data);
-//         },
-//         error:(error) =>{
-//             console.log(error.responsText);
-//         }
-//     });
-
-    
-// })
-// }
-
-
 {
    
 
@@ -115,9 +87,9 @@ let deleteInterview = () =>{
 
 }
 
-    deleteInterview();
-    deleteStudent();
-    createInterview();
+   deleteInterview();
+   deleteStudent();
+   createInterview();
   
 
 }

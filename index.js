@@ -36,6 +36,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+//file upload
+app.use('/uploads',express.static(__dirname + '/uploads')); 
 app.use('/',require('./router'));
 app.listen(port,(err) =>{
     if(err){

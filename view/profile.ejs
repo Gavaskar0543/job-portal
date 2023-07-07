@@ -9,14 +9,17 @@
           <div class="card">
             <div class="card-body">
               <div class="profile-picture mx-auto mb-3">
-                <img src="https://lumiere-a.akamaihd.net/v1/images/a_avatarpandorapedia_tuk_16x9_1098_06_41be0010.jpeg?region=240%2C0%2C1440%2C1080" class="img-fluid rounded-circle" alt="Avatar">
+            
+                 <img src="<%= student.avatar %>" class="img-fluid rounded-circle"  alt="<%= student.name %>">
+              
+               
               </div>
               <h4 class="card-title"> <%= student.name %> </h4>
               <p class="card-text">Email: <%= student.email %> </p>
-              <form>
+              <form action="/uploads/<%= student._id %>" enctype="multipart/form-data" method="post">
                 <div class="form-group">
                   <label for="status">Status</label>
-                  <select class="form-control" id="status">
+                  <select class="form-control" name="status" id="status">
                     <option value="not_placed">Not Placed</option>
                     <option value="placed">Placed</option>
                      
@@ -24,9 +27,9 @@
                 </div>
                 <div class="form-group">
                   <label for="avatar">Change Avatar</label>
-                  <input type="file" class="form-control-file" id="avatar">
+                  <input type="file" class="form-control-file" id="avatar" name="avatar"  >
                 </div>
-               <a href="http://"> <button type="submit" class="btn btn-primary">Update</button></a>
+                <button type="submit" class="btn btn-primary">Update</button>
               </form>
               <a href="/students" class="btn btn-secondary mt-3">Back</a>
             </div>
