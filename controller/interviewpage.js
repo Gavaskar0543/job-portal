@@ -31,7 +31,15 @@ module.exports.destroy = async function(req,res){
   try {
     const interviewDate = await Interview.findById(req.params.id);
      await Interview.deleteOne(interviewDate._id);
-    return res.redirect('back');
+    
+    if(req.xhr){
+      return res.status(200).json({
+        data:{
+          interview_id : req.params.id
+        },
+        message:'interview deleted'
+      })
+    }
 
   } catch (error) {
     console.log(error.message,'error in deleting interview schedule')

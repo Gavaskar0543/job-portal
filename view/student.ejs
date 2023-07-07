@@ -25,7 +25,7 @@
         <tbody>
          
             <% for(person of student) { %>
-              <tr>
+              <tr id="student-<%= person._id %>">
                 <th scope="row"><%= person.id %></th>
                 <td><a href="/std/profile/<%= person._id %>"><%= person.name %> </a></td>
                 <td><%= person.email %></td>
@@ -35,7 +35,7 @@
                 <td><%= person.webDFinalScore %></td>
                 <td><%= person.reactFinalScore %></td>
                 <td><a href="/inter/downloadCsv/<%= person._id %>"><i class="fa fa-duotone fa-file-csv fa-bounce" style="--fa-primary-color: #323129; --fa-secondary-color: #fb0915;"></i></a></td>
-                <td><a href="/std/destroy/<%= person._id %>"><i class="fa fa-duotone fa-user-xmark" style="--fa-primary-color: #db6b71; --fa-secondary-color: #3178f2;"></i></a></td>
+                <td><a href="/std/destroy/<%= person._id %>" class="delete-student"><i class="fa fa-duotone fa-user-xmark" style="--fa-primary-color: #db6b71; --fa-secondary-color: #3178f2;"></i></a></td>
               </tr>
             <% } %>
           <!-- Add more student rows as needed -->
@@ -50,3 +50,5 @@
   </footer>
 
 
+
+  <script src="/js/interviewAjax.js"> </script>

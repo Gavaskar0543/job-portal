@@ -57,12 +57,12 @@
     let newInter = (interviews) =>{
         return $(`   
             
-            <tr>
+            <tr id="interview-${interviews._id}>
               <td> ${ interviews.date } </td>
               <td> ${ interviews.company } </td>
               <td>
                 <a href="/students" class="btn btn-info btn-sm">View Students</a>
-            <a href='/inter/destroy/${ interviews._id }'><button class="btn btn-danger btn-sm">Delete</button></a>
+            <a href='/inter/destroy/${ interviews._id }' class="btn btn-danger btn-sm delete-interview">Delete</a>
               </td>
             </tr>
 
@@ -71,11 +71,52 @@
   
    
       
-     
-
-  
+     //delete interview form database
+    let deleteStudent = () =>{
+        let deleteLink = $('.delete-student');
+        console.log(deleteLink);
       
+            $(deleteLink).click((e)=>{
+                e.preventDefault();
+                $.ajax({
+                    type: 'GET',
+                    url: $(deleteLink).prop('href'),
+                    success: (data) => {
+                        console.log(data);
+                        $(`#student-${data.data.student_id}`).remove();
+                    },
+                    error: (xhr, textStatus, errorThrown) => {
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+        
+    }
 
+//delete interview form database
+let deleteInterview = () =>{
+    let deleteLink = $('.delete-interview');
+    console.log(deleteLink);
+  
+        $(deleteLink).click((e)=>{
+            e.preventDefault();
+            $.ajax({
+                type: 'GET',
+                url: $(deleteLink).prop('href'),
+                success: (data) => {
+                    console.log(data);
+                    $(`#interview-${data.data.interview_id}`).remove();
+                },
+                error: (xhr, textStatus, errorThrown) => {
+                    console.log(xhr.responseText);
+                }
+            });
+        });
+
+}
+
+    deleteInterview();
+    deleteStudent();
     createInterview();
   
 

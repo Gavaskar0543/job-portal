@@ -31,7 +31,14 @@ module.exports.destroy = async function(req,res){
     try {
     const student = await Student.findById(req.params.id);
      await Student.deleteOne(student._id);
-     res.redirect('back')
+    if(req.xhr){
+        return res.status(200).json({
+            data:{
+                student_id : req.params.id
+            },
+            message:'student deleted'
+        })
+    }
         
     } catch (error) {
         console.log(error.message,'error in deleting student');
