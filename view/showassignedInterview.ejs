@@ -3,27 +3,29 @@
   <!-- Page Content -->
   <div class="container py-5">
     <h1 class="mb-4">Assigned Interviews</h1>
+   <% for(data of schedule){ %>
     <div class="card">
       <div class="card-body">
        
-        <h5 class="card-title">Interview 1</h5>
+        <h5 class="card-title"> <%= data.interview.company %> </h5>
         <h6 class="card-subtitle mb-2 text-muted"> Interview </h6>
-        <p class="card-text">Interview Date: DD/MM/YYYY</p>
+        <p class="card-text">Interview Date: <%= data.interview.date %> </p>
         <h6 class="card-subtitle mb-2 text-muted">Assigned Students:</h6>
+         <% for(let i=0; i< data.student.length; i++){ %>
         <ul class="list-group">
           <li class="list-group-item d-flex justify-content-between align-items-center">
-            Student 1
+         
+           <%= data.student[i].name %>
+           
             <span class="badge bg-primary">PASS</span>
           </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Student 2
-            <span class="badge bg-danger">FAIL</span>
-          </li>
+         
           <!-- Add more assigned students here -->
         </ul>
-        
+       <% } %>
       </div>
     </div>
+    <% } %>
   </div>
 
  

@@ -6,10 +6,10 @@ const studentInterviewSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'Interview'
     },
-    student:{
+    student:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Student'
-    },
+    }],
    
     
 },{

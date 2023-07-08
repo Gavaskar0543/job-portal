@@ -118,22 +118,34 @@ module.exports.downloadCsv = async function(req, res) {
 
 module.exports.studentInterview = async function(req, res) {
   try {
-    let interview = await Interview.findById(req.body.interview);
-    if (interview) {
-      let newSchedule = await StudentInterview.create({
-        student: req.body.student,
-        interview: req.body.interview
-      });
-      if (newSchedule) {
-        let student = await Student.findById(req.body.student);
-        if (student) {
-          student.interviews.push(interview);
-          await student.save();
-        }
+    // Check if the interview already exists in the StudentInterview collection
+    const alreadySchedule = await StudentInterview.findOne({ interview: req.body.interview });
+    if (alreadySchedule) {
+      alreadySchedule.student.push(req.body.student);
+      await alreadySchedule.save();
+     
+      // Assuming Student is a valid model
+      const student = await Student.findById(req.body.student);
+      if (student) {
+        student.interviews.push(req.body.interview);
+        await student.save();
       }
-      res.redirect('back');
-      console.log(newSchedule);
+      
+    } else {
+      const studentInterview = await StudentInterview.create({
+        interview: req.body.interview,
+        student: [req.body.student] // Pass an array of students
+      });
+      
+     // Assuming Student is a valid model
+     const student = await Student.findById(req.body.student);
+     if (student) {
+       student.interviews.push(req.body.interview);
+       await student.save();
+     }
+     
     }
+    return res.redirect('back');
   } catch (error) {
     console.log(error.message);
   }
