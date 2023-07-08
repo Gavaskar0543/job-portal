@@ -1,5 +1,6 @@
 const Student = require("../models/studentData");
 const Interview = require("../models/interviewData");
+const StudentInterview = require("../models/studentInterviewData");
 const fs = require("fs");
 const path = require("path");
 module.exports.create = async function (req, res) {
@@ -97,9 +98,12 @@ module.exports.studentInterview = async function (req, res) {
     // Sort by createdAt in descending order
      const interview = await Interview.find({});
      const student = await Student.find({});
+     const schedule = await StudentInterview.find({}).populate('student').populate('interview');
+     console.log(schedule);
     return res.render("assignInterview", {
       interview: interview,
       student: student,
+      schedule: schedule,
     });
   } catch (error) {
     console.log(error.message, "error in getting student interview");

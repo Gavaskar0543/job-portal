@@ -33,7 +33,12 @@ const studentSchema = new mongoose.Schema({
     },
     avatar:{
         type:String
-    }
+    },
+    //one student many interviews store in array
+    interviews:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'StudentInterview'
+    }],
 },
 {
     timestamps:true

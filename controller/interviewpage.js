@@ -79,9 +79,15 @@ module.exports.downloadCsv = async function(req, res) {
         { id: 'dsaFinalScore', title: 'DsaFinalScore' },
         { id:  'webDFinalScore', title: 'WebDFinalScore' },
         { id: 'reactFinalScore', title: 'ReactFinalScore' },
+        //i want to show all interview dates in csv file
+        {id:'interview',title:'Interview'}
+        
         // Add more fields as needed
       ],
+      // Add interview date fields to the header
+    
     });
+   
 
     // Write the student data to CSV
     await csvWriter.writeRecords([student]);
@@ -109,12 +115,26 @@ module.exports.downloadCsv = async function(req, res) {
 };
 
 //studentInterview schedule
-module.exports.studentInterview = async function(req,res){
-  try{
-    let newInterview = await StudentInterview.create(req.body);
-    res.redirect('back');
-    console.log(newInterview);
-  }catch(error){
+
+module.exports.studentInterview = async function(req, res) {
+  try {
+    let interview = await Interview.findById(req.body.interview);
+    if (interview) {
+      let newSchedule = await StudentInterview.create({
+        student: req.body.student,
+        interview: req.body.interview
+      });
+      if (newSchedule) {
+        let student = await Student.findById(req.body.student);
+        if (student) {
+          student.interviews.push(interview);
+          await student.save();
+        }
+      }
+      res.redirect('back');
+      console.log(newSchedule);
+    }
+  } catch (error) {
     console.log(error.message);
   }
-  }
+}

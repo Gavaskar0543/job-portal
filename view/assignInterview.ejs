@@ -6,7 +6,7 @@
       <div class="mb-3">
         <label for="studentSelect" class="form-label">Select Student</label>
       
-        <select class="form-select" name="studentid" id="studentSelect">
+        <select class="form-select" name="student" id="studentSelect">
           <option value="">Select Student</option>
           <% for(students of student) { %>
             <option value="<%= students._id %>"><%= students.name %></option>
@@ -33,7 +33,7 @@
     </form>
   </div>
 
-  <%- include('showassignedInterview.ejs') %>
+  <%- include('showassignedInterview') %>
 
   <!-- Footer -->
   <footer class="bg-light text-center py-4">

@@ -1,14 +1,16 @@
 const mongoose = require('mongoose');
 const studentInterviewSchema = new mongoose.Schema({    
 
-    studentid:{
-        type:String,
-        required:true
-    },
+  //one interview many students
     interview:{
-        type:String,
-        required:true
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Interview'
     },
+    student:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Student'
+    },
+   
     
 },{
     timestamps:true
