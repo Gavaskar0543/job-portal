@@ -25,6 +25,9 @@ app.use(express.urlencoded());
 app.set('view engine','ejs');
 //seting view engine to access views
 app.set('views','view');
+//node sass middleware
+
+
 //session storange in user device
 app.use(session({
    name:'authemp',
@@ -44,6 +47,10 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+//path
+const path = require('path');
+//sass middleware
+
 //logger
 app.use(logger(env.morgan.mode,env.morgan.options));
 //file upload

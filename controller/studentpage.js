@@ -1,4 +1,5 @@
 const Student = require("../models/studentData");
+const Interview = require("../models/interviewData");
 const fs = require("fs");
 const path = require("path");
 module.exports.create = async function (req, res) {
@@ -79,3 +80,28 @@ module.exports.update = async function (req, res) {
     console.log("Error in updating student:", error.message);
   }
 };
+
+//student result
+module.exports.studentResult = async function (req, res) {
+  try {
+    // Sort by createdAt in descending order
+
+    return res.render("result");
+  } catch (error) {
+    console.log(error.message, "error in getting student result");
+  }
+}
+//student interview
+module.exports.studentInterview = async function (req, res) { 
+  try {
+    // Sort by createdAt in descending order
+     const interview = await Interview.find({});
+     const student = await Student.find({});
+    return res.render("assignInterview", {
+      interview: interview,
+      student: student,
+    });
+  } catch (error) {
+    console.log(error.message, "error in getting student interview");
+  }
+}

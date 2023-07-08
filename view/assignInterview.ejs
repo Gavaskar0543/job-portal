@@ -1,0 +1,41 @@
+
+  <!-- Page Content -->
+  <div class="container py-5">
+    <h1 class="mb-4">Assign Interview to Student</h1>
+    <form action="/inter/studentInterview" method="post">
+      <div class="mb-3">
+        <label for="studentSelect" class="form-label">Select Student</label>
+      
+        <select class="form-select" name="studentid" id="studentSelect">
+          <option value="">Select Student</option>
+          <% for(students of student) { %>
+            <option value="<%= students._id %>"><%= students.name %></option>
+          <% } %>
+          <!-- <option value="student1">Student 1</option>
+          <option value="student2">Student 2</option> -->
+          <!-- Add more students here -->
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="interviewSelect" class="form-label">Select Interview</label>
+        <select class="form-select" name="interview" id="interviewSelect">
+          <option value="">Select Interview</option>
+          <% for(interviews of interview) { %>
+            
+            <option value="<%= interviews._id %>"><%= interviews.company %>,<%= interviews.position %>,<%= interviews.date %> </option>
+          <% } %>
+          <!-- <option value="interview1">Interview 1</option>
+          <option value="interview2">Interview 2</option> -->
+          <!-- Add more interviews here -->
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Assign Interview</button>
+    </form>
+  </div>
+
+  <%- include('showassignedInterview.ejs') %>
+
+  <!-- Footer -->
+  <footer class="bg-light text-center py-4">
+    <p class="mb-0">&copy; 2023 Team Career Camp. All rights reserved.</p>
+  </footer>

@@ -7,4 +7,6 @@ router.post('/newOne',interviewcontrol.newOne);
 router.get('/destroy/:id',interviewcontrol.destroy);
 //download csv
 router.get('/downloadCsv/:id',interviewcontrol.downloadCsv);
+//studentInterview
+router.post('/studentInterview',interviewcontrol.studentInterview);
 module.exports = router;

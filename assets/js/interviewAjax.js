@@ -32,6 +32,7 @@
             <tr id="interview-${interviews._id}">
               <td> ${ interviews.date } </td>
               <td> ${ interviews.company } </td>
+              <td> ${ interviews.position } </td>
               <td>
                 <a href="/students" class="btn btn-info btn-sm">View Students</a>
             <a href='/inter/destroy/${ interviews._id }' class="btn btn-danger btn-sm delete-interview">Delete</a>

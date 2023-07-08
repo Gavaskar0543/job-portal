@@ -15,6 +15,13 @@
             <input type="text" name="company" class="form-control" id="companyName" placeholder="Enter company name">
           </div>
           <div class="form-group">
+            <label for="position">Position</label>
+            <select name="position" class="form-control" id="position">
+              <option value="Frontend Developer">Frontend Developer</option>
+              <option value="Backend Developer">Backend Developer</option>
+              <option value="Fullstack Developer">Fullstack Delveloper</option>
+          </div>
+          <div class="form-group">
             <label for="interviewDate">Interview Date</label>
             <input type="date" name="date" class="form-control" id="interviewDate">
           </div>
@@ -34,6 +41,7 @@
             <tr>
               <th>Date</th>
               <th>Company</th>
+              <th>Position</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -43,6 +51,7 @@
             <tr id="interview-<%= interviews._id %>">
               <td> <%= interviews.date %> </td>
               <td> <%= interviews.company %> </td>
+              <td> <%= interviews.position %> </td>
               <td>
                 <a href="/students" class="btn btn-info btn-sm">View Students</a>
                 <a  href='/inter/destroy/<%= interviews._id %>' class="btn btn-danger btn-sm   delete-interview">Delete</a>
