@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const env = require('./environment');
+//mongoose.connect(`mongodb://localhost:27017/employee_portal`);
 mongoose.connect(`mongodb+srv://${env.dbUser}:${env.dbPassword}.jivfwuj.mongodb.net/?retryWrites=true&w=majority`);
 const db = mongoose.connection;
 
