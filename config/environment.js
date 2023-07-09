@@ -12,8 +12,7 @@ const accessLogStream = rfs.createStream('access.log', {
 
 const development = {
     name: 'development',
-    dbUser:'gavaskar',
-    dbPassword:'V.gu2PSzC7cLWLa@cluster0',
+    dbUser:'employee',
     secret: 'mystrongsecret',
     morgan: {
         mode: 'dev',
