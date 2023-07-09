@@ -67,6 +67,7 @@ module.exports.downloadCsv = async function(req, res) {
     if (!student) {
       return res.status(404).json({ message: 'Student not found' });
     }
+    let header = [];
 
     // Prepare the CSV file
     const csvWriter = createCsvWriter({
@@ -84,9 +85,25 @@ module.exports.downloadCsv = async function(req, res) {
         
         // Add more fields as needed
       ],
-      // Add interview date fields to the header
+      
     
     });
+    //loop over Student.interviews and add interviews as a string to interview field
+    let interview = '';
+    for(let i=0;i<student.interviews.length;i++){
+      try{
+        let interviewSchedule = await Interview.findById(student.interviews[i]);
+      interview = interview + interviewSchedule.date + '-'+ interviewSchedule.company+'-'+interviewSchedule.position+',';
+
+      }
+      catch(error){
+        console.log(error.message);
+      }
+     
+
+    }
+    student.interview = interview;
+    header.push({id:'interview',title:'Interview'});
    
 
     // Write the student data to CSV

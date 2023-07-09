@@ -34,6 +34,6 @@ module.exports.create = async function(req,res){
 //creating session
 module.exports.createSession = function(req, res) {
    
-   return res.redirect('/');
+   return res.redirect('/students');
     
   };
