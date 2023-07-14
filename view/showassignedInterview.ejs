@@ -8,7 +8,7 @@
       <div class="card-body">
         <% if(data.interview){ %>
         <h5 class="card-title"> <%= data.interview.company %> </h5>
-        <% } %>
+       
         <h6 class="card-subtitle mb-2 text-muted"> Interview </h6>
         <p class="card-text">Interview Date: <%= data.interview.date %> </p>
         <h6 class="card-subtitle mb-2 text-muted">Assigned Students:</h6>
@@ -23,6 +23,7 @@
          
           <!-- Add more assigned students here -->
         </ul>
+       <% } %>
        <% } %>
       </div>
     </div>
