@@ -39,7 +39,7 @@ app.use(session({
    },
     
    store: MongoStore.create({
-    mongoUrl: "mongodb://127.0.0.1:27017",
+    mongoUrl: "mongodb+srv://gavaskar:V.gu2PSzC7cLWLa@cluster0.jivfwuj.mongodb.net/?retryWrites=true&w=majority",
     autoRemove: "disabled",
   }),
 
